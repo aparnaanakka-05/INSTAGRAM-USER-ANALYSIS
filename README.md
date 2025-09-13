@@ -46,8 +46,9 @@ Each query was designed to answer a specific analytical question:
 
 ## Sample Query
 ```sql
-SELECT hashtags.tag, COUNT(*) AS usage_count
-FROM hashtags
-GROUP BY hashtags.tag
-ORDER BY usage_count DESC
-LIMIT 5;
+select tags.id, tag_name, count(tag_name) as most_used from tags inner join photo_tags
+on tags.id = photo_tags.tag_id
+group by tag_id
+order by most _used desc
+limit 5;
+
